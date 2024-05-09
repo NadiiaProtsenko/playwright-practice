@@ -121,7 +121,7 @@ test.describe('Field "Email"', () => {
     await page.fill('#signupEmail', 'aqa_valid_email@example.com'); 
     await page.locator('#signupEmail').blur();
 
-    const emailField = await page.locator('#signupEmail');
+    const emailField = page.locator('#signupEmail');
     const isErrorPresent = await emailField.evaluate(element => element.classList.contains('invalid'));
     expect(isErrorPresent).toBeFalsy();
   });
@@ -152,7 +152,7 @@ test.describe('Field "Password"', () => {
     await page.fill('#signupPassword', 'StrongPass123'); 
     await page.locator('#signupPassword').blur();
 
-    const passwordField = await page.locator('#signupPassword');
+    const passwordField = page.locator('#signupPassword');
     const isErrorPresent = await passwordField.evaluate(element => element.classList.contains('invalid'));
     expect(isErrorPresent).toBeFalsy();
   });
@@ -185,7 +185,7 @@ test.describe('Field "Re-enter password"', () => {
     await page.fill('#signupRepeatPassword', 'StrongPass123'); 
     await page.locator('#signupRepeatPassword').blur();
 
-    const repeatPasswordField = await page.locator('#signupRepeatPassword');
+    const repeatPasswordField = page.locator('#signupRepeatPassword');
     const isErrorPresent = await repeatPasswordField.evaluate(element => element.classList.contains('invalid'));
     expect(isErrorPresent).toBeFalsy();
   });
