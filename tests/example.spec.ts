@@ -7,12 +7,6 @@ async function navigateToRegistrationForm(page: Page) {
 }
 
 test.describe('Field "Name"', () => {
-  
-  async function navigateToRegistrationForm(page: Page) {
-    await page.goto('/');
-    await page.click('text=Sign In');
-    await page.click('text=Registration');
-  }
 
   test('Verify that field "Name" shows error if name is less than 2', async ({ page }) => {
     await navigateToRegistrationForm(page);
@@ -58,12 +52,6 @@ test.describe('Field "Name"', () => {
 });
 
 test.describe('Field "Last Name"', () => {
-  
-  async function navigateToRegistrationForm(page: Page) {
-    await page.goto('/');
-    await page.click('text=Sign In');
-    await page.click('text=Registration');
-  }
 
   test('Verify that field "Last Name" shows error if name is less than 2 characters', async ({ page }) => {
     await navigateToRegistrationForm(page);
@@ -109,12 +97,6 @@ test.describe('Field "Last Name"', () => {
 });
 
 test.describe('Field "Email"', () => {
-  
-  async function navigateToRegistrationForm(page: Page) {
-    await page.goto('/');
-    await page.click('text=Sign In');
-    await page.click('text=Registration');
-  }
 
   test('Verify that field "Email" shows error if email is empty', async ({ page }) => {
     await navigateToRegistrationForm(page);
@@ -146,12 +128,6 @@ test.describe('Field "Email"', () => {
 });
 
 test.describe('Field "Password"', () => {
-  
-  async function navigateToRegistrationForm(page: Page) {
-    await page.goto('/');
-    await page.click('text=Sign In');
-    await page.click('text=Registration');
-  }
 
   test('Verify that field "Password" shows error if password is empty', async ({ page }) => {
     await navigateToRegistrationForm(page);
@@ -183,12 +159,6 @@ test.describe('Field "Password"', () => {
 });
 
 test.describe('Field "Re-enter password"', () => {
-  
-  async function navigateToRegistrationForm(page: Page) {
-    await page.goto('/');
-    await page.click('text=Sign In');
-    await page.click('text=Registration');
-  }
 
   test('Verify that field "Re-enter password" shows error if password is empty', async ({ page }) => {
     await navigateToRegistrationForm(page);
