@@ -198,9 +198,10 @@ test('Verify that registration button is disabled with incorrect registration da
   await page.fill('#signupEmail', 'invalid_email');
   await page.fill('#signupPassword', '');
   await page.fill('#signupRepeatPassword', 'MismatchedPassword123');
+  await page.locator('#signupRepeatPassword').blur();
 
-  const isRegisterButtonDisabled = await page.getAttribute('button.btn-primary', 'disabled');
-  expect(isRegisterButtonDisabled).toBe(null);
+  const isRegisterButtonDisabled = await page.getAttribute('.modal-footer button.btn.btn-primary', 'disabled');
+  expect(isRegisterButtonDisabled).toBe("");
 });
 
 test('Verify successful registration redirects to the garage page', async ({ page }) => {
