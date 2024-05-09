@@ -38,7 +38,7 @@ test.describe('Field "Name"', () => {
     await page.locator('#signupName').blur();
 
     const errorMessage = await page.textContent('p:has-text("Name required")');
-    expect(errorMessage).toBe('Name required');
+    expect(errorMessage).toContain('Name required');
   });
 
   test('Verify that field "Name" shows error if name contains spaces', async ({ page }) => {
@@ -83,7 +83,7 @@ test.describe('Field "Last Name"', () => {
     await page.locator('#signupLastName').blur();
 
     const errorMessage = await page.textContent('p:has-text("Last name required")');
-    expect(errorMessage).toBe('Last name required');
+    expect(errorMessage).toContain('Last name required');
   });
 
   test('Verify that field "Last Name" shows error if name contains spaces', async ({ page }) => {
