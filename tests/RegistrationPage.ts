@@ -1,4 +1,4 @@
-import { Page, Locator } from '@playwright/test';
+import { Page, Locator, expect } from '@playwright/test';
 import assert from 'assert';
 
 export class RegistrationPage {
@@ -80,12 +80,12 @@ export class RegistrationPage {
   }
 
   async assertRegisterButtonDisabled(): Promise<boolean> {
-    const isDisabled = await this.page.locator('.modal-footer button.btn.btn-primary').getAttribute('disabled');
+    const isDisabled = await this.page.locator('.modal-footer button.btn.btn-primary', { hasText: 'Register' }).getAttribute('disabled');
     return isDisabled === '';
 }
   
   async assertOnGaragePage() {
     const addCarButton = await this.page.waitForSelector('button.btn.btn-primary');
-    assert.ok(addCarButton, 'Add car button not found');
-  }
+    expect(await addCarButton.isVisible()).toBeTruthy();
+}
 }
