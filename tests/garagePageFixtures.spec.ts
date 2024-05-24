@@ -111,14 +111,9 @@ test.describe('Garage tests', () => {
             const newMileage = '1';
             await garagePageAsUser.enterMileage(newMileage);
             await garagePageAsUser.clickSaveButton();
-            const errorMessage = await garagePageAsUser.page.locator('.alert-danger').first();        
-            if (await errorMessage.isVisible()) {
-                await expect(errorMessage).toHaveText('New mileage is less then previous entry');
-                await garagePageAsUser.clickCancelButton(); 
-            } else {
-                await garagePageAsUser.clickSaveButton();
-                await expect(garagePageAsUser.firstCarName).toHaveText('Porsche 911');
-            }
+            const errorMessage = await garagePageAsUser.page.locator('.alert-danger').first(); 
+            await expect(errorMessage).toHaveText('New mileage is less then previous entry');       
+            await garagePageAsUser.clickCancelButton(); 
         });
         test('Verify the garage page URL', async ({ addAndEditCarAsUser }) => {
             await expect(addAndEditCarAsUser.page).toHaveURL('https://qauto.forstudy.space/panel/garage');
@@ -241,14 +236,9 @@ test.describe('Garage tests', () => {
             const newMileage = '1';
             await garagePageAsGuest.enterMileage(newMileage);
             await garagePageAsGuest.clickSaveButton();
-            const errorMessage = await garagePageAsGuest.page.locator('.alert-danger').first();        
-            if (await errorMessage.isVisible()) {
-                await expect(errorMessage).toHaveText('New mileage is less then previous entry');
-                await garagePageAsGuest.clickCancelButton(); 
-            } else {
-                await garagePageAsGuest.clickSaveButton();
-                await expect(garagePageAsGuest.firstCarName).toHaveText('Porsche 911');
-            }
+            const errorMessage = await garagePageAsGuest.page.locator('.alert-danger').first(); 
+            await expect(errorMessage).toHaveText('New mileage is less then previous entry');       
+            await garagePageAsGuest.clickCancelButton(); 
         });
         test('Verify the garage page URL', async ({ addAndEditCarAsGuest }) => {
             await expect(addAndEditCarAsGuest.page).toHaveURL('https://qauto.forstudy.space/panel/garage');

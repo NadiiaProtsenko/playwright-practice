@@ -30,7 +30,7 @@ export class GaragePage {
         this.removeCarButton = page.locator('.btn-outline-danger');
         this.acceptCarRemovingButton = page.locator('.btn-danger');
         this.errorMessageBox = page.locator('.alert-danger').first();
-        this.cancelButton = page.locator('button.btn.btn-secondary');
+        this.cancelButton = page.locator('button.btn.btn-secondary', { hasText: 'Cancel' });
     }
 
     async open() {
