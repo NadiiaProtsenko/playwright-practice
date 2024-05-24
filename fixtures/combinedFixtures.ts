@@ -9,8 +9,7 @@ export const test = base.extend({
         await garagePage.open();
         await garagePage.clickAddCarButton();
         await use(garagePage);
-        // Remove comment to enable auto-remove after each test if needed
-        // await garagePage.removeLastCar();
+        await garagePage.removeLastCar();
     },
     garagePageAsGuest: async ({ page }, use) => {
         let garagePage = new GaragePage(page);
@@ -18,7 +17,6 @@ export const test = base.extend({
         await page.locator('.-guest').click();
         await garagePage.clickAddCarButton();
         await use(garagePage);
-        // Remove comment to enable auto-remove after each test if needed
-        // await garagePage.removeLastCar();
+        await garagePage.removeLastCar();
     },
 });

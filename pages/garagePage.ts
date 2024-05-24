@@ -11,10 +11,11 @@ export class GaragePage {
     readonly addButton: Locator;
     readonly firstCarName: Locator;
     readonly editCarIcon: Locator;
+    readonly saveButton: Locator;
     readonly removeCarButton: Locator;
     readonly acceptCarRemovingButton: Locator;
-
-
+    readonly errorMessageBox: Locator;
+    readonly cancelButton: Locator; 
 
     constructor(page: Page) {
         this.page = page;
@@ -25,8 +26,11 @@ export class GaragePage {
         this.addButton = page.getByText('Add', { exact: true });
         this.firstCarName = page.locator('.car_name').first();
         this.editCarIcon = page.locator('.icon-edit').first();
+        this.saveButton = page.getByRole('button', { name: 'Save' });
         this.removeCarButton = page.locator('.btn-outline-danger');
         this.acceptCarRemovingButton = page.locator('.btn-danger');
+        this.errorMessageBox = page.locator('.alert-danger').first();
+        this.cancelButton = page.locator('button.btn.btn-secondary');
     }
 
     async open() {
@@ -57,6 +61,20 @@ export class GaragePage {
         await this.addButton.click();
     }
 
+    async clickEditCarIcon() {
+        await this.editCarIcon.click();
+    }
+
+    async clickSaveButton() {
+        await this.saveButton.click();
+    }
+
+    async clickCancelButton() {
+        await this.cancelButton.scrollIntoViewIfNeeded();
+        await expect(this.cancelButton).toBeVisible(); 
+        await this.cancelButton.click(); 
+    }
+
     async getFirstCarName() {
         return this.firstCarName;
     }
@@ -67,6 +85,5 @@ export class GaragePage {
         await this.removeCarButton.click();
         await this.acceptCarRemovingButton.click();
         await expect(this.editCarIcon).toHaveCount(carsNumberBefore - 1);
-
     }
 }
