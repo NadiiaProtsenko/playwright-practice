@@ -6,7 +6,9 @@
   "scripts": {
     "test": "npx playwright test --project=chromium",
     "test:ui": "npx playwright test --ui",
-    "report": "npx playwright show-report"
+    "report": "npx playwright show-report",
+    "setup-state": "npx playwright test tests/setup/loginAndSaveState.spec.ts",
+    "test-with-state": "npm run setup-state && npx playwright test --project=chromium"
   },
   "author": "",
   "license": "ISC",
