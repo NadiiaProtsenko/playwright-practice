@@ -119,12 +119,20 @@ test.describe('Garage tests', () => {
             await expect(addAndEditCarAsUser.page).toHaveURL('https://qauto.forstudy.space/panel/garage');
         });
         test('Verify the presence of Instructions button', async ({ verifyInstructionsButtonAsUser }) => {
+            const instructionsButton = await verifyInstructionsButtonAsUser.page.locator('button:has-text("Instructions")');
+            await expect(instructionsButton).toBeVisible();
         });
         test('Verify the presence of Profile button', async ({ verifyProfileButtonAsUser }) => {
+            const profileButton = await verifyProfileButtonAsUser.page.locator('button:has-text("Profile")');
+            await expect(profileButton).toBeVisible();
         });
         test('Verify the presence of Settings button', async ({ verifySettingsButtonAsUser }) => {
+            const settingsButton = await verifySettingsButtonAsUser.page.locator('button:has-text("Settings")');
+            await expect(settingsButton).toBeVisible();
         });
         test('Verify the presence of Log out button', async ({ verifyLogoutButtonAsUser }) => {
+            const logoutButton = await verifyLogoutButtonAsUser.page.locator('button:has-text("Log out")');
+            await expect(logoutButton).toBeVisible();
         });
     });
 
@@ -244,12 +252,20 @@ test.describe('Garage tests', () => {
             await expect(addAndEditCarAsGuest.page).toHaveURL('https://qauto.forstudy.space/panel/garage');
         });
         test('Verify the presence of Instructions button', async ({ verifyInstructionsButtonAsGuest }) => {
+            const instructionsButton = await verifyInstructionsButtonAsGuest .page.locator('button:has-text("Instructions")');
+            await expect(instructionsButton).toBeVisible();
         });
-        test('Verify the presence of Profile button', async ({ verifyProfileButtonAsGuest }) => {
+        test('Verify the presence of Profile button', async ({ verifyProfileButtonAsGuest  }) => {
+            const profileButton = await verifyProfileButtonAsGuest .page.locator('button:has-text("Profile")');
+            await expect(profileButton).toBeVisible();
         });
-        test('Verify the presence of Settings button', async ({ verifySettingsButtonAsGuest }) => {
+        test('Verify the presence of Settings button', async ({ verifySettingsButtonAsGuest  }) => {
+            const settingsButton = await verifySettingsButtonAsGuest .page.locator('button:has-text("Settings")');
+            await expect(settingsButton).toBeVisible();
         });
-        test('Verify the presence of Log out button', async ({ verifyLogoutButtonAsGuest }) => {
+        test('Verify the presence of Log out button', async ({ verifyLogoutButtonAsGuest  }) => {
+            const logoutButton = await verifyLogoutButtonAsGuest .page.locator('button:has-text("Log out")');
+            await expect(logoutButton).toBeVisible();
         });
     });
 
