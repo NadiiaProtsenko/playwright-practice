@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { SignInForm } from '../forms/signInForm';
+import { SignInForm } from '../page-objects/forms/signInForm';
 import { correctEmail, incorrectEmail, correctPassword, incorrectPassword } from '../test-data/credentials';
 
 test.describe('Login tests', () => {

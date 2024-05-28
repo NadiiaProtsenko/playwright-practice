@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { GaragePage } from '../../pages/garagePageStorage';
+import { GaragePage } from '../../page-objects/pages/garagePageStorage';
 import { correctEmail, correctEmail2, correctPassword, correctPassword2 } from '../../test-data/credentials';
 
 test.describe('Save storage state after login', () => {

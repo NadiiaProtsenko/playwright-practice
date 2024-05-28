@@ -1,6 +1,6 @@
 import { expect, type Locator, type Page } from '@playwright/test';
 import { SignInForm } from '../forms/signInForm';
-import { correctEmail, correctPassword } from '../test-data/credentials';
+import { correctEmail, correctPassword } from '../../test-data/credentials';
 
 export class GaragePage {
     readonly page: Page;
