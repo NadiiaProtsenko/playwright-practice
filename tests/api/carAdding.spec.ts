@@ -93,6 +93,47 @@ test.describe('Garage API tests with auth in beforeAll', () => {
         //await page.pause();
     });
 
+    test('Add car without authentication', async ({ request }) => {
+        const modelId = (await getModelsList(carBrands.bmw.id))[0].id;
+        const mileage = Math.floor(Math.random() * 200);
+        const createCarRequestJson = await createCar(null, carBrands.bmw.id, modelId, mileage);
+        expect(createCarRequestJson.status).toBe('error');
+        expect(createCarRequestJson.message).toBe('Not authenticated');
+    });
+
+    test('Add car with incorrect brand ID', async ({ request }) => {
+        const incorrectBrandId = 99999;
+        const modelId = (await getModelsList(carBrands.bmw.id))[0].id;
+        const mileage = Math.floor(Math.random() * 200);
+        const createCarRequestJson = await createCar(cookiesWithAuth, incorrectBrandId, modelId, mileage);
+        expect(createCarRequestJson.status).toBe('error');
+        expect(createCarRequestJson.message).toBe('Brand not found');
+    });
+
+    test('Add car with incorrect model ID', async ({ request }) => {
+        const incorrectModelId = 99999;
+        const mileage = Math.floor(Math.random() * 200);
+        const createCarRequestJson = await createCar(cookiesWithAuth, carBrands.bmw.id, incorrectModelId, mileage);
+        expect(createCarRequestJson.status).toBe('error');
+        expect(createCarRequestJson.message).toBe('Model not found');
+    });
+
+    test('Add car with negative mileage', async ({ request }) => {
+        const modelId = (await getModelsList(carBrands.bmw.id))[0].id;
+        const mileage = -100;
+        const createCarRequestJson = await createCar(cookiesWithAuth, carBrands.bmw.id, modelId, mileage);
+        expect(createCarRequestJson.status).toBe('error');
+        expect(createCarRequestJson.message).toBe('Mileage has to be from 0 to 999999');
+    });
+
+    test('Add car with excessively high mileage', async ({ request }) => {
+        const modelId = (await getModelsList(carBrands.bmw.id))[0].id;
+        const mileage = 1_000_000_000;
+        const createCarRequestJson = await createCar(cookiesWithAuth, carBrands.bmw.id, modelId, mileage);
+        expect(createCarRequestJson.status).toBe('error');
+        expect(createCarRequestJson.message).toBe('Mileage has to be from 0 to 999999');
+    });
+
     test.afterAll(async ({ }) => {
         const cars = await getUserCars(cookiesWithAuth);
         for (const car of cars) {
