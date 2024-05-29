@@ -48,6 +48,11 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
       dependencies: ['setup']
     },
+    {
+      name: 'ui-tests-without-setup',
+      use: { ...devices['Desktop Chrome'] },
+      
+    },
 
     {
       name: 'api-tests',
